@@ -27,9 +27,10 @@ import useChainId from '@/hooks/useChainId'
 import { useAppSelector } from '@/store'
 import { selectAddedSafes } from '@/store/addedSafesSlice'
 import { LOAD_SAFE_EVENTS, trackEvent } from '@/services/analytics'
-import { AppRoutes } from '@/config/routes'
+//import { AppRoutes } from '@/config/routes'
 import MUILink from '@mui/material/Link'
-import Link from 'next/link'
+//import Link from 'next/link'
+import ExternalLink from '@/components/common/ExternalLink'
 
 enum Field {
   name = 'name',
@@ -139,13 +140,13 @@ const SetAddressStep = ({ data, onSubmit, onBack }: StepRenderProps<LoadSafeForm
 
           <Typography mt={4}>
             By continuing you consent to the{' '}
-            <Link href={AppRoutes.terms} passHref>
+            <ExternalLink href="https://www.mantle.xyz/terms">
               <MUILink>terms of use</MUILink>
-            </Link>{' '}
+            </ExternalLink>{' '}
             and{' '}
-            <Link href={AppRoutes.privacy} passHref>
+            <ExternalLink href="https://www.mantle.xyz/privacy-policy">
               <MUILink>privacy policy</MUILink>
-            </Link>
+            </ExternalLink>
             .
           </Typography>
         </Box>

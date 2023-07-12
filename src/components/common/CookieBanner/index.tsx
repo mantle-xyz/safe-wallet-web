@@ -69,8 +69,8 @@ export const CookieBanner = ({
   }
 
   const handleAcceptAll = () => {
-    setValue(CookieType.UPDATES, true)
-    setValue(CookieType.ANALYTICS, true)
+    /* setValue(CookieType.UPDATES, true) */
+    /* setValue(CookieType.ANALYTICS, true) */
     setTimeout(handleAccept, 300)
   }
 
@@ -109,7 +109,7 @@ export const CookieBanner = ({
                     Locally stored data for core functionality
                   </Typography>
                 </Box>
-                <Box mb={2}>
+                {/* <Box mb={2}>
                   <CookieCheckbox
                     checkboxProps={{ ...register(CookieType.UPDATES), id: 'beamer' }}
                     label="Beamer"
@@ -133,7 +133,7 @@ export const CookieBanner = ({
                     Help us make the app better. We never track your Safe Account address or wallet addresses, or any
                     transaction data.
                   </Typography>
-                </Box>
+                </Box> */}
               </Grid>
             </Grid>
 
