@@ -8,7 +8,7 @@ import { addressBookSlice, selectAllAddressBooks } from '@/store/addressBookSlic
 import { addedSafesSlice, selectAllAddedSafes } from '@/store/addedSafesSlice'
 import { safeAppsSlice, selectSafeApps } from '@/store/safeAppsSlice'
 import { selectSettings, settingsSlice } from '@/store/settingsSlice'
-import InfoIcon from '@/public/images/notifications/info.svg'
+//import InfoIcon from '@/public/images/notifications/info.svg'
 //import ExternalLink from '@/components/common/ExternalLink'
 import { ImportFileUpload } from '@/components/settings/DataManagement/ImportFileUpload'
 import { ImportDialog } from '@/components/settings/DataManagement/ImportDialog'
@@ -98,7 +98,7 @@ const DataManagement = () => {
               settings={settings}
               safeApps={safeApps}
             />
-            <Typography>
+            {/* <Typography>
               <SvgIcon
                 component={InfoIcon}
                 inheritViewBox
@@ -109,9 +109,9 @@ const DataManagement = () => {
                   mr: 0.5,
                 }}
               />
-              {/* You can also export your data from the{' '}
-              <ExternalLink href="https://gnosis-safe.io/app/export">old app</ExternalLink> */}
-            </Typography>
+              You can also export your data from the{' '}
+              <ExternalLink href="https://gnosis-safe.io/app/export">old app</ExternalLink>
+            </Typography> */}
           </Grid>
         </Grid>
       </Paper>
