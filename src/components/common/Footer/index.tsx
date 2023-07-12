@@ -74,13 +74,13 @@ const Footer = (): ReactElement | null => {
               <Typography variant="caption">&copy;{new Date().getFullYear()}</Typography>
             </li>
             <li>
-              <FooterLink href="https://www.mantle.xyz/">Mantle Website</FooterLink>
+              <ExternalLink href="https://www.mantle.xyz/">Mantle Website</ExternalLink>
             </li>
             <li>
-              <FooterLink href="https://www.mantle.xyz/terms">Terms</FooterLink>
+              <ExternalLink href="https://www.mantle.xyz/terms">Terms</ExternalLink>
             </li>
             <li>
-              <FooterLink href="https://www.mantle.xyz/privacy-policy">Privacy Policy</FooterLink>
+              <ExternalLink href="https://www.mantle.xyz/privacy-policy">Privacy Policy</ExternalLink>
             </li>
           </>
         )}
