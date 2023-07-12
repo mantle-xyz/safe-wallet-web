@@ -45,6 +45,11 @@ export const createOnboard = (
       name: 'Mantle Safe',
       icon: location.origin + '/images/logo-round.svg',
       description: 'Mantle Safe – smart contract wallet for Mantle networks',
+      agreement: {
+        termsUrl: 'https://www.mantle.xyz/terms',
+        privacyUrl: 'https://www.mantle.xyz/privacy-policy',
+        version: '1.0.0',
+      },
     },
 
     connect: {
