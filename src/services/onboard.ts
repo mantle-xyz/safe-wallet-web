@@ -54,6 +54,11 @@ export const createOnboard = (
       icon: '<svg height="100%"><image href="/images/safe-logo-green.png" height="100%" /></svg>',
       description: 'Please select a wallet to connect to Mantle Safe',
       recommendedInjectedWallets: getRecommendedInjectedWallets(),
+      agreement: {
+        termsUrl: 'https://www.mantle.xyz/terms',
+        privacyUrl: 'https://www.mantle.xyz/privacy-policy',
+        version: '1.0.0',
+      },
     },
 
     connect: {
