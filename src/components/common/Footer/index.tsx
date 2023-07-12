@@ -68,7 +68,22 @@ const Footer = (): ReactElement | null => {
               <FooterLink href={getHref(AppRoutes.settings.index)}>Preferences</FooterLink>
             </li>
           </>
-        ) : null}
+        ) : (
+          <>
+            <li>
+              <Typography variant="caption">&copy;{new Date().getFullYear()}</Typography>
+            </li>
+            <li>
+              <FooterLink href="https://www.mantle.xyz/">Mantle Website</FooterLink>
+            </li>
+            <li>
+              <FooterLink href="https://www.mantle.xyz/terms">Terms</FooterLink>
+            </li>
+            <li>
+              <FooterLink href="https://www.mantle.xyz/privacy-policy">Privacy Policy</FooterLink>
+            </li>
+          </>
+        )}
 
         <li>
           <ExternalLink href={`${packageJson.homepage}/releases/tag/v${packageJson.version}`}>
