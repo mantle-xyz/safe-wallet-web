@@ -42,7 +42,8 @@ export const dispatchSafeMsgProposal = async ({
       error: asError(error),
     })
 
-    throw error
+    // UPDATE: enable error throw after updating CORS
+    // throw error
   }
 
   safeMsgDispatch(SafeMsgEvent.PROPOSE, {
