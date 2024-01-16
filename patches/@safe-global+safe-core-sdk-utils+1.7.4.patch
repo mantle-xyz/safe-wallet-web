@@ -1,12 +1,14 @@
 diff --git a/node_modules/@safe-global/safe-core-sdk-utils/dist/src/eip-3770/config.js b/node_modules/@safe-global/safe-core-sdk-utils/dist/src/eip-3770/config.js
-index 7dbddf5..55dfe2e 100644
+index 7dbddf5..6745a5f 100644
 --- a/node_modules/@safe-global/safe-core-sdk-utils/dist/src/eip-3770/config.js
 +++ b/node_modules/@safe-global/safe-core-sdk-utils/dist/src/eip-3770/config.js
-@@ -78,6 +78,7 @@ exports.networks = [
+@@ -78,7 +78,9 @@ exports.networks = [
      { chainId: 4689, shortName: 'iotex-mainnet' },
      { chainId: 4918, shortName: 'txvm' },
      { chainId: 4919, shortName: 'xvm' },
 +    { chainId: 5000, shortName: 'mantle' },
      { chainId: 5001, shortName: 'mantle-testnet' },
++    { chainId: 5003, shortName: 'mnt-sep' },
      { chainId: 7341, shortName: 'shyft' },
      { chainId: 7700, shortName: 'canto' },
+     { chainId: 8217, shortName: 'cypress' },
