@@ -8,6 +8,7 @@ import css from './styles.module.css'
 import useChainId from '@/hooks/useChainId'
 import { Skeleton } from '@mui/material'
 import isEmpty from 'lodash/isEmpty'
+import { useDarkMode } from '@/hooks/useDarkMode'
 
 type ChainIndicatorProps = {
   chainId?: string
@@ -33,6 +34,7 @@ const ChainIndicator = ({
   showUnknown = true,
   showLogo = true,
 }: ChainIndicatorProps): ReactElement | null => {
+  const isDarkMode = useDarkMode()
   const currentChainId = useChainId()
   const id = chainId || currentChainId
   const chains = useAppSelector(selectChains)
@@ -60,7 +62,7 @@ const ChainIndicator = ({
     >
       {showLogo && (
         <img
-          src={getChainLogo(chainConfig.chainId)}
+          src={getChainLogo(chainConfig.chainId, isDarkMode)}
           alt={`${chainConfig.chainName} Logo`}
           width={24}
           height={24}

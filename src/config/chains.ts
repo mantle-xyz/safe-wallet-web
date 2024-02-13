@@ -35,12 +35,15 @@ const ChainLogos = {
   [chains.sep]: '/images/networks/sep.png',
 
   [chains.mantle]: '/images/networks/mantle.svg',
+  [chains.mantle + '-dark-theme']: '/images/networks/mantle-light.svg',
   [chains['mantle-testnet']]: '/images/networks/mantle.svg',
+  [chains['mantle-testnet'] + '-dark-theme']: '/images/networks/mantle-light.svg',
   [chains['mnt-sep']]: '/images/networks/mantle.svg',
+  [chains['mnt-sep'] + '-dark-theme']: '/images/networks/mantle-light.svg',
 }
 
-export const getChainLogo = (chainId: string) => {
-  return ChainLogos[chainId]
+export const getChainLogo = (chainId: string, isDarkMode?: boolean) => {
+  return isDarkMode ? ChainLogos[`${chainId}-dark-theme`] : ChainLogos[chainId]
 }
 
 export default chains
