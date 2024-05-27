@@ -1,4 +1,3 @@
-import { getChainLogo } from '@/config/chains'
 import type { ReactElement } from 'react'
 import { useMemo } from 'react'
 import classnames from 'classnames'
@@ -26,6 +25,7 @@ const fallbackChainConfig = {
     backgroundColor: '#ddd',
     textColor: '#000',
   },
+  chainLogoUri: null,
 }
 
 const ChainIndicator = ({
