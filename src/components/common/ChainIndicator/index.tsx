@@ -8,6 +8,7 @@ import useChainId from '@/hooks/useChainId'
 import { Skeleton } from '@mui/material'
 import isEmpty from 'lodash/isEmpty'
 import { useDarkMode } from '@/hooks/useDarkMode'
+import { getChainLogo } from '@/config/chains'
 
 type ChainIndicatorProps = {
   chainId?: string
