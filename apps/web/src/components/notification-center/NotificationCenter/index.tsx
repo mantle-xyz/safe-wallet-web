@@ -188,7 +188,7 @@ const NotificationCenter = (): ReactElement => {
                 passHref
                 legacyBehavior
               >
-                <span className={css.settingsLink}>Push notifications settings</span>
+                <span className={css.settingsLink}></span>
               </Link>
             )}
           </div>
