@@ -188,9 +188,7 @@ const NotificationCenter = (): ReactElement => {
                 passHref
                 legacyBehavior
               >
-                {/* <MuiLink className={css.settingsLink} variant="body2" onClick={onSettingsClick}>
-                  <SvgIcon component={SettingsIcon} inheritViewBox fontSize="small" /> Push notifications settings
-                </MuiLink> */}
+                <span className={css.settingsLink}>Push notifications settings</span>
               </Link>
             )}
           </div>
