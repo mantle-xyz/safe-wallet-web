@@ -18,6 +18,8 @@ const useIndexingStatus = () => {
     () => {
       return getIndexingStatus(chainId)
     },
+    // count is intentionally included as a dependency to trigger polling at intervals
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [chainId, count],
     false,
   )
