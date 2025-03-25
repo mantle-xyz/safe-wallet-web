@@ -1,32 +1,28 @@
 diff --git a/dist/assets/allowance-module/v0.1.0/allowance-module.json b/dist/assets/allowance-module/v0.1.0/allowance-module.json
-index 25a409dc318ec0c0c16f7818ace7792f546e6313..97d98d7e363e23aace3b9c251cb4345cfa729f3f 100644
+index a4fe2e54016c024afb0f83648b1a68712659c94f..39f5dc12574d22e6b2b9f999031b67f01e315e10 100644
 --- a/dist/assets/allowance-module/v0.1.0/allowance-module.json
 +++ b/dist/assets/allowance-module/v0.1.0/allowance-module.json
-@@ -15,7 +15,10 @@
-         "42220": "0xCFbFaC74C26F8647cBDb8c5caf80BB5b32E43134",
+@@ -16,6 +16,9 @@
          "43114": "0x1Fb403834C911eB98d56E74F5182b0d64C3b3b4D",
          "73799": "0xCFbFaC74C26F8647cBDb8c5caf80BB5b32E43134",
--        "11155111": "0xCFbFaC74C26F8647cBDb8c5caf80BB5b32E43134"
-+        "11155111": "0xCFbFaC74C26F8647cBDb8c5caf80BB5b32E43134",
+         "80094": "0xCFbFaC74C26F8647cBDb8c5caf80BB5b32E43134",
 +        "5000": "0xE46FE78DBfCa5E835667Ba9dCd3F3315E7623F8a",
 +        "5001": "0xE46FE78DBfCa5E835667Ba9dCd3F3315E7623F8a",
-+        "5003": "0xE46FE78DBfCa5E835667Ba9dCd3F3315E7623F8a"
++        "5003": "0xE46FE78DBfCa5E835667Ba9dCd3F3315E7623F8a",
+         "11155111": "0xCFbFaC74C26F8647cBDb8c5caf80BB5b32E43134"
      },
      "abi": [
-         {
 diff --git a/dist/assets/allowance-module/v0.1.1/allowance-module.json b/dist/assets/allowance-module/v0.1.1/allowance-module.json
-index 8996b058503bd9de8a7ce0cc4445273011bcdb16..5656f1a3840e9504cc006a73c3d80126c1b045bd 100644
+index 1d0b1d6e973183621204b22f370151094f2e2b8c..18cd91ebb7b74dc7b5550d4ee9f90f7af62459c1 100644
 --- a/dist/assets/allowance-module/v0.1.1/allowance-module.json
 +++ b/dist/assets/allowance-module/v0.1.1/allowance-module.json
-@@ -4,7 +4,10 @@
-     "version": "0.1.1",
+@@ -5,6 +5,9 @@
      "networkAddresses": {
          "100": "0xAA46724893dedD72658219405185Fb0Fc91e091C",
--        "137": "0xAA46724893dedD72658219405185Fb0Fc91e091C"
-+        "137": "0xAA46724893dedD72658219405185Fb0Fc91e091C",
+         "130": "0xAA46724893dedD72658219405185Fb0Fc91e091C",
 +        "5000": "0xE46FE78DBfCa5E835667Ba9dCd3F3315E7623F8a",
 +        "5001": "0xE46FE78DBfCa5E835667Ba9dCd3F3315E7623F8a",
-+        "5003": "0xE46FE78DBfCa5E835667Ba9dCd3F3315E7623F8a"
++        "5003": "0xE46FE78DBfCa5E835667Ba9dCd3F3315E7623F8a",
+         "137": "0xAA46724893dedD72658219405185Fb0Fc91e091C"
      },
      "abi": [
-         {
