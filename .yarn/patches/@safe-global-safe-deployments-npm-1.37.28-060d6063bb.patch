@@ -72,7 +72,7 @@ index 3a5e2305dbb93553bc958edc25b58d4772ff6988..9daaf0e46b05403375f102147a382c4e
          "196": "canonical",
          "250": "canonical",
 diff --git a/dist/assets/v1.4.1/safe_migration.json b/dist/assets/v1.4.1/safe_migration.json
-index afc803db9daca76bd10f6367b866591a2eb47b6b..a7fb12ab5ac1f120678d57939d10620bf3a8b199 100644
+index afc803db9daca76bd10f6367b866591a2eb47b6b..0a7344e0f7412ff10e264f5044e8caa717dccf5a 100644
 --- a/dist/assets/v1.4.1/safe_migration.json
 +++ b/dist/assets/v1.4.1/safe_migration.json
 @@ -32,6 +32,7 @@
@@ -83,6 +83,14 @@ index afc803db9daca76bd10f6367b866591a2eb47b6b..a7fb12ab5ac1f120678d57939d10620b
          "1516": "canonical",
          "1663": "canonical",
          "1750": "canonical",
+@@ -44,6 +45,7 @@
+         "4061": "canonical",
+         "4661": "canonical",
+         "5000": "canonical",
++        "5003": "canonical",
+         "5115": "canonical",
+         "5611": "canonical",
+         "7200": "canonical",
 diff --git a/dist/assets/v1.4.1/safe_proxy_factory.json b/dist/assets/v1.4.1/safe_proxy_factory.json
 index 01c5f3647e95decf7f635d02005e5f2de12fa981..f6dbf1dc9a14f70ab03a188cd401fc414fee069b 100644
 --- a/dist/assets/v1.4.1/safe_proxy_factory.json
@@ -96,7 +104,7 @@ index 01c5f3647e95decf7f635d02005e5f2de12fa981..f6dbf1dc9a14f70ab03a188cd401fc41
          "137": "canonical",
          "146": "canonical",
 diff --git a/dist/assets/v1.4.1/safe_to_l2_migration.json b/dist/assets/v1.4.1/safe_to_l2_migration.json
-index 16e005a56912c8f8902cada08eb9424a29308b9d..f77634121f137cd0377d189f509355b112e82b47 100644
+index 16e005a56912c8f8902cada08eb9424a29308b9d..22c0b3f969df9f2f3e4f461b7c242a19ddfffa69 100644
 --- a/dist/assets/v1.4.1/safe_to_l2_migration.json
 +++ b/dist/assets/v1.4.1/safe_to_l2_migration.json
 @@ -26,6 +26,7 @@
@@ -107,8 +115,16 @@ index 16e005a56912c8f8902cada08eb9424a29308b9d..f77634121f137cd0377d189f509355b1
          "970": "canonical",
          "995": "canonical",
          "1001": "canonical",
+@@ -44,6 +45,7 @@
+         "4061": "canonical",
+         "4661": "canonical",
+         "5000": "canonical",
++        "5003": "canonical",
+         "5115": "canonical",
+         "5611": "canonical",
+         "7200": "canonical",
 diff --git a/dist/assets/v1.4.1/safe_to_l2_setup.json b/dist/assets/v1.4.1/safe_to_l2_setup.json
-index 822cf1f56eb0c14c9d86bfb83ae05cdf1431a9ab..afa27b0823e310cbfdc5c7f1af858411ef6241b8 100644
+index 822cf1f56eb0c14c9d86bfb83ae05cdf1431a9ab..9999c9d25b6fa7aa34556cc58b8643fb9dc74622 100644
 --- a/dist/assets/v1.4.1/safe_to_l2_setup.json
 +++ b/dist/assets/v1.4.1/safe_to_l2_setup.json
 @@ -25,6 +25,7 @@
@@ -119,6 +135,14 @@ index 822cf1f56eb0c14c9d86bfb83ae05cdf1431a9ab..afa27b0823e310cbfdc5c7f1af858411
          "938": "canonical",
          "970": "canonical",
          "995": "canonical",
+@@ -44,6 +45,7 @@
+         "4061": "canonical",
+         "4661": "canonical",
+         "5000": "canonical",
++        "5003": "canonical",
+         "5115": "canonical",
+         "5611": "canonical",
+         "7200": "canonical",
 diff --git a/dist/assets/v1.4.1/sign_message_lib.json b/dist/assets/v1.4.1/sign_message_lib.json
 index 04967be57ec7b535d15ca17a992d6a14c54a404f..04165313ba6fa27fd11950a18e3145c8cd01b531 100644
 --- a/dist/assets/v1.4.1/sign_message_lib.json
@@ -143,3 +167,39 @@ index b2d8d2d1eb648b98fe72cc853acd8b9e7ddb6638..66b190122f8c6521b0af492150b2acba
          "169": "canonical",
          "177": "canonical",
          "181": "canonical",
+diff --git a/src/assets/v1.4.1/safe_migration.json b/src/assets/v1.4.1/safe_migration.json
+index 3ef9c341e9b20fb4ef3b86edc95d1e4af89e5b46..6ae861120279d83d6f1f6b18d34c6fa38aed0bc9 100644
+--- a/src/assets/v1.4.1/safe_migration.json
++++ b/src/assets/v1.4.1/safe_migration.json
+@@ -44,6 +44,7 @@
+     "4061": "canonical",
+     "4661": "canonical",
+     "5000": "canonical",
++    "5003": "canonical",
+     "5115": "canonical",
+     "5611": "canonical",
+     "7200": "canonical",
+diff --git a/src/assets/v1.4.1/safe_to_l2_migration.json b/src/assets/v1.4.1/safe_to_l2_migration.json
+index 4cd78710bea0d158f86700c731eac2744a5b5c2f..96cc300c22a9e1420319eb90a875c6eee2da5716 100644
+--- a/src/assets/v1.4.1/safe_to_l2_migration.json
++++ b/src/assets/v1.4.1/safe_to_l2_migration.json
+@@ -44,6 +44,7 @@
+     "4061": "canonical",
+     "4661": "canonical",
+     "5000": "canonical",
++    "5003": "canonical",
+     "5115": "canonical",
+     "5611": "canonical",
+     "7200": "canonical",
+diff --git a/src/assets/v1.4.1/safe_to_l2_setup.json b/src/assets/v1.4.1/safe_to_l2_setup.json
+index baaad9b41e6642364e4aeffec37181ebdce3d588..f9dfe103b0f1160390bbcbad3d40895e512f9c93 100644
+--- a/src/assets/v1.4.1/safe_to_l2_setup.json
++++ b/src/assets/v1.4.1/safe_to_l2_setup.json
+@@ -44,6 +44,7 @@
+     "4061": "canonical",
+     "4661": "canonical",
+     "5000": "canonical",
++    "5003": "canonical",
+     "5115": "canonical",
+     "5611": "canonical",
+     "7200": "canonical",
