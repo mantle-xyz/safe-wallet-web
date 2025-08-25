@@ -5,11 +5,12 @@ import { useAppSelector } from '@/store'
 import { selectChainById, selectChains } from '@/store/chainsSlice'
 import css from './styles.module.css'
 import useChainId from '@/hooks/useChainId'
-import { Skeleton, Stack, Typography } from '@mui/material'
+import { Skeleton, Stack, SvgIcon, Typography } from '@mui/material'
 import isEmpty from 'lodash/isEmpty'
 import { useDarkMode } from '@/hooks/useDarkMode'
 import { getChainLogo } from '@/config/chains'
 import FiatValue from '../FiatValue'
+import UnknownChainIcon from '@/public/images/common/unknown.svg'
 
 type ChainIndicatorProps = {
   chainId?: string
@@ -20,10 +21,11 @@ type ChainIndicatorProps = {
   onlyLogo?: boolean
   responsive?: boolean
   fiatValue?: string
+  imageSize?: number
 }
 
 const fallbackChainConfig = {
-  chainName: 'Unknown chain',
+  chainName: 'Unknown network',
   chainId: '-1',
   theme: {
     backgroundColor: '#ddd',
@@ -41,6 +43,7 @@ const ChainIndicator = ({
   showLogo = true,
   responsive = false,
   onlyLogo = false,
+  imageSize = 24,
 }: ChainIndicatorProps): ReactElement | null => {
   const isDarkMode = useDarkMode()
   const currentChainId = useChainId()
@@ -60,6 +63,27 @@ const ChainIndicator = ({
     }
   }, [chainConfig])
 
+  const logoComponent = chainConfig?.chainLogoUri ? (
+    <img
+      src={getChainLogo(chainConfig.chainId, isDarkMode)}
+      alt={`${chainConfig.chainName} Logo`}
+      width={imageSize}
+      height={imageSize}
+      loading="lazy"
+    />
+  ) : (
+    <SvgIcon
+      component={UnknownChainIcon}
+      inheritViewBox
+      sx={{
+        height: imageSize,
+        width: imageSize,
+        backgroundColor: (theme) => theme.palette.background.main,
+        borderRadius: '100%',
+      }}
+    />
+  )
+
   return noChains ? (
     <Skeleton width="100%" height="22px" variant="rectangular" sx={{ flexShrink: 0 }} />
   ) : chainConfig ? (
@@ -74,15 +98,7 @@ const ChainIndicator = ({
         [css.onlyLogo]: onlyLogo,
       })}
     >
-      {showLogo && (
-        <img
-          src={getChainLogo(chainConfig.chainId, isDarkMode)}
-          alt={`${chainConfig.chainName} Logo`}
-          width={24}
-          height={24}
-          loading="lazy"
-        />
-      )}
+      {showLogo && logoComponent}
       {!onlyLogo && (
         <Stack>
           <span className={css.name}>{chainConfig.chainName}</span>

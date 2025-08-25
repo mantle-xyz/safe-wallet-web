@@ -6,7 +6,6 @@ import type { MDXComponents } from 'mdx/types'
 import { BRAND_NAME } from '@/config/constants'
 
 const overrideComponents: MDXComponents = {
-  // @ts-expect-error
   a: CustomLink,
 }
 

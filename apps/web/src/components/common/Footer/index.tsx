@@ -74,7 +74,7 @@ const Footer = (): ReactElement | null => {
         ) : (
           <>
             <li>
-              <Typography variant="caption">&copy;{new Date().getFullYear()}</Typography>
+              <Typography variant="caption">&copy;{new Date().getFullYear()} Mantle Safe</Typography>
             </li>
             <li>
               <ExternalLink href="https://www.mantle.xyz/">Mantle Website</ExternalLink>

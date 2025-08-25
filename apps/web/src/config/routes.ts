@@ -10,6 +10,7 @@ export const AppRoutes = {
   index: '/',
   imprint: '/imprint',
   home: '/home',
+  earn: '/earn',
   cookie: '/cookie',
   bridge: '/bridge',
   addressBook: '/address-book',
@@ -47,6 +48,12 @@ export const AppRoutes = {
   share: {
     safeApp: '/share/safe-app',
   },
+  spaces: {
+    settings: '/spaces/settings',
+    safeAccounts: '/spaces/safe-accounts',
+    members: '/spaces/members',
+    index: '/spaces',
+  },
   transactions: {
     tx: '/transactions/tx',
     queue: '/transactions/queue',
@@ -56,6 +63,7 @@ export const AppRoutes = {
     history: '/transactions/history',
   },
   welcome: {
+    spaces: '/welcome/spaces',
     index: '/welcome',
     accounts: '/welcome/accounts',
   },
