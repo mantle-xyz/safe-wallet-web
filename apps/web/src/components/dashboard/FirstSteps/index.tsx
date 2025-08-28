@@ -1,38 +1,51 @@
-import { BuyCryptoOptions } from '@/components/common/BuyCryptoButton'
-import CheckWallet from '@/components/common/CheckWallet'
-import EthHashInfo from '@/components/common/EthHashInfo'
-import ExternalLink from '@/components/common/ExternalLink'
-import ModalDialog from '@/components/common/ModalDialog'
-import QRCode from '@/components/common/QRCode'
-import Track from '@/components/common/Track'
-import FirstTxFlow from '@/features/counterfactual/FirstTxFlow'
-import { selectUndeployedSafe } from '@/features/counterfactual/store/undeployedSafesSlice'
-import useBalances from '@/hooks/useBalances'
-import { useCurrentChain } from '@/hooks/useChains'
-import useSafeInfo from '@/hooks/useSafeInfo'
-import { OVERVIEW_EVENTS } from '@/services/analytics'
-import { useAppDispatch, useAppSelector } from '@/store'
-import { selectSettings, setQrShortName } from '@/store/settingsSlice'
-import { selectOutgoingTransactions } from '@/store/txHistorySlice'
-import type { ChainInfo } from '@safe-global/safe-gateway-typescript-sdk'
-import classnames from 'classnames'
-import { type ReactNode, useState } from 'react'
-import { Card, WidgetBody, WidgetContainer } from '@/components/dashboard/styled'
-import { Box, Button, CircularProgress, Divider, FormControlLabel, Grid, Switch, Typography } from '@mui/material'
-import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined'
-import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded'
-import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded'
-import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined'
-import css from './styles.module.css'
-import ActivateAccountButton from '@/features/counterfactual/ActivateAccountButton'
-import { isReplayedSafeProps } from '@/features/counterfactual/utils'
-import { getExplorerLink } from '@safe-global/utils/utils/gateway'
+import { BuyCryptoOptions } from '@/components/common/BuyCryptoButton';
+import CheckWallet from '@/components/common/CheckWallet';
+import EthHashInfo from '@/components/common/EthHashInfo';
+import ExternalLink from '@/components/common/ExternalLink';
+import ModalDialog from '@/components/common/ModalDialog';
+import QRCode from '@/components/common/QRCode';
+import Track from '@/components/common/Track';
+import FirstTxFlow from '@/features/counterfactual/FirstTxFlow';
+import { selectUndeployedSafe } from '@/features/counterfactual/store/undeployedSafesSlice';
+import useBalances from '@/hooks/useBalances';
+import { useCurrentChain } from '@/hooks/useChains';
+import useSafeInfo from '@/hooks/useSafeInfo';
+import { OVERVIEW_EVENTS } from '@/services/analytics';
+import { useAppDispatch, useAppSelector } from '@/store';
+import { selectSettings, setQrShortName } from '@/store/settingsSlice';
+import { selectOutgoingTransactions } from '@/store/txHistorySlice';
+import type { ChainInfo } from '@safe-global/safe-gateway-typescript-sdk';
+import classnames from 'classnames';
+import { type ReactNode, useState } from 'react';
+import {
+  Card,
+  WidgetBody,
+  WidgetContainer,
+} from '@/components/dashboard/styled';
+import {
+  Box,
+  Button,
+  CircularProgress,
+  Divider,
+  FormControlLabel,
+  Grid,
+  Switch,
+  Typography,
+} from '@mui/material';
+import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
+import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
+import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded';
+import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined';
+import css from './styles.module.css';
+import ActivateAccountButton from '@/features/counterfactual/ActivateAccountButton';
+import { isReplayedSafeProps } from '@/features/counterfactual/utils';
+import { getExplorerLink } from '@safe-global/utils/utils/gateway';
 
 const calculateProgress = (items: boolean[]) => {
-  const totalNumberOfItems = items.length
-  const completedItems = items.filter((item) => item)
-  return Math.round((completedItems.length / totalNumberOfItems) * 100)
-}
+  const totalNumberOfItems = items.length;
+  const completedItems = items.filter((item) => item);
+  return Math.round((completedItems.length / totalNumberOfItems) * 100);
+};
 
 const StatusCard = ({
   badge,
@@ -41,11 +54,11 @@ const StatusCard = ({
   completed,
   children,
 }: {
-  badge: ReactNode
-  title: string
-  content: string
-  completed: boolean
-  children?: ReactNode
+  badge: ReactNode;
+  title: string;
+  content: string;
+  completed: boolean;
+  children?: ReactNode;
 }) => {
   return (
     <Card className={css.card}>
@@ -76,16 +89,24 @@ const StatusCard = ({
       </Typography>
       {children}
     </Card>
-  )
-}
+  );
+};
 
-const ActivationStatusWidget = ({ explorerLink }: { explorerLink?: string }) => {
+const ActivationStatusWidget = ({
+  explorerLink,
+}: {
+  explorerLink?: string;
+}) => {
   return (
     <StatusCard
       badge={
         <Typography
           variant="body2"
-          sx={{ backgroundColor: 'border.light', borderRadius: '0 0 4px 4px', padding: '4px 8px' }}
+          sx={{
+            backgroundColor: 'border.light',
+            borderRadius: '0 0 4px 4px',
+            padding: '4px 8px',
+          }}
         >
           Just submitted
         </Typography>
@@ -100,40 +121,43 @@ const ActivationStatusWidget = ({ explorerLink }: { explorerLink?: string }) => 
         </ExternalLink>
       )}
     </StatusCard>
-  )
-}
+  );
+};
 
 const UsefulHintsWidget = () => {
   return (
     <StatusCard
       badge={
-        <Typography variant="body2" className={classnames(css.badgeText, css.badgeTextInfo)}>
+        <Typography
+          variant="body2"
+          className={classnames(css.badgeText, css.badgeTextInfo)}
+        >
           <LightbulbOutlinedIcon fontSize="small" sx={{ mr: 0.5 }} />
           Did you know
         </Typography>
       }
-      title="Explore over Web3 dApps"
-      content="In our Safe App section you can connect your Safe to over Web3 dApps directly or via Wallet Connect to interact with any application."
+      title="Explore Safe dApps"
+      content="In our Safe App section you can connect your Safe to dApps directly or via Wallet Connect to interact with any application."
       completed={false}
     />
-  )
-}
+  );
+};
 
 const AddFundsWidget = ({ completed }: { completed: boolean }) => {
-  const [open, setOpen] = useState<boolean>(false)
-  const { safeAddress } = useSafeInfo()
-  const chain = useCurrentChain()
-  const dispatch = useAppDispatch()
-  const settings = useAppSelector(selectSettings)
-  const qrPrefix = settings.shortName.qr ? `${chain?.shortName}:` : ''
-  const qrCode = `${qrPrefix}${safeAddress}`
+  const [open, setOpen] = useState<boolean>(false);
+  const { safeAddress } = useSafeInfo();
+  const chain = useCurrentChain();
+  const dispatch = useAppDispatch();
+  const settings = useAppSelector(selectSettings);
+  const qrPrefix = settings.shortName.qr ? `${chain?.shortName}:` : '';
+  const qrCode = `${qrPrefix}${safeAddress}`;
 
-  const title = 'Add native assets'
-  const content = `Receive ${chain?.nativeCurrency.name} to start interacting with your account.`
+  const title = 'Add native assets';
+  const content = `Receive ${chain?.nativeCurrency.name} to start interacting with your account.`;
 
   const toggleDialog = () => {
-    setOpen((prev) => !prev)
-  }
+    setOpen((prev) => !prev);
+  };
 
   return (
     <StatusCard
@@ -211,7 +235,9 @@ const AddFundsWidget = ({ completed }: { completed: boolean }) => {
                         <Switch
                           data-testid="qr-code-switch"
                           checked={settings.shortName.qr}
-                          onChange={(e) => dispatch(setQrShortName(e.target.checked))}
+                          onChange={(e) =>
+                            dispatch(setQrShortName(e.target.checked))
+                          }
                         />
                       }
                       label={
@@ -228,8 +254,8 @@ const AddFundsWidget = ({ completed }: { completed: boolean }) => {
                       mb: 2,
                     }}
                   >
-                    Add funds directly from your bank account or copy your address to send tokens from a different
-                    account.
+                    Add funds directly from your bank account or copy your
+                    address to send tokens from a different account.
                   </Typography>
 
                   <Box
@@ -278,14 +304,15 @@ const AddFundsWidget = ({ completed }: { completed: boolean }) => {
         </>
       )}
     </StatusCard>
-  )
-}
+  );
+};
 
 const FirstTransactionWidget = ({ completed }: { completed: boolean }) => {
-  const [open, setOpen] = useState<boolean>(false)
+  const [open, setOpen] = useState<boolean>(false);
 
-  const title = 'Create your first transaction'
-  const content = 'Simply send funds, add a new signer or swap tokens through a safe app.'
+  const title = 'Create your first transaction';
+  const content =
+    'Simply send funds, add a new signer or swap tokens through a safe app.';
 
   return (
     <>
@@ -320,14 +347,14 @@ const FirstTransactionWidget = ({ completed }: { completed: boolean }) => {
       </StatusCard>
       <FirstTxFlow open={open} onClose={() => setOpen(false)} />
     </>
-  )
-}
+  );
+};
 
 const ActivateSafeWidget = ({ chain }: { chain: ChainInfo | undefined }) => {
-  const [open, setOpen] = useState<boolean>(false)
+  const [open, setOpen] = useState<boolean>(false);
 
-  const title = `Activate account ${chain ? 'on ' + chain.chainName : ''}`
-  const content = 'Activate your account to start using all benefits of Safe'
+  const title = `Activate account ${chain ? 'on ' + chain.chainName : ''}`;
+  const content = 'Activate your account to start using all benefits of Safe';
 
   return (
     <>
@@ -351,8 +378,8 @@ const ActivateSafeWidget = ({ chain }: { chain: ChainInfo | undefined }) => {
       </StatusCard>
       <FirstTxFlow open={open} onClose={() => setOpen(false)} />
     </>
-  )
-}
+  );
+};
 
 const AccountReadyWidget = () => {
   return (
@@ -370,31 +397,39 @@ const AccountReadyWidget = () => {
       >
         Safe Account is ready!
       </Typography>
-      <Typography>Continue to improve your account security and unlock more features</Typography>
+      <Typography>
+        Continue to improve your account security and unlock more features
+      </Typography>
     </Card>
-  )
-}
+  );
+};
 
 const FirstSteps = () => {
-  const { balances } = useBalances()
-  const { safe, safeAddress } = useSafeInfo()
-  const outgoingTransactions = useAppSelector(selectOutgoingTransactions)
-  const chain = useCurrentChain()
-  const undeployedSafe = useAppSelector((state) => selectUndeployedSafe(state, safe.chainId, safeAddress))
+  const { balances } = useBalances();
+  const { safe, safeAddress } = useSafeInfo();
+  const outgoingTransactions = useAppSelector(selectOutgoingTransactions);
+  const chain = useCurrentChain();
+  const undeployedSafe = useAppSelector((state) =>
+    selectUndeployedSafe(state, safe.chainId, safeAddress)
+  );
 
-  const isMultiSig = safe.threshold > 1
-  const isReplayedSafe = undeployedSafe && isReplayedSafeProps(undeployedSafe?.props)
+  const isMultiSig = safe.threshold > 1;
+  const isReplayedSafe =
+    undeployedSafe && isReplayedSafeProps(undeployedSafe?.props);
 
-  const hasNonZeroBalance = balances && (balances.items.length > 1 || BigInt(balances.items[0]?.balance || 0) > 0)
-  const hasOutgoingTransactions = !!outgoingTransactions && outgoingTransactions.length > 0
-  const completedItems = [hasNonZeroBalance, hasOutgoingTransactions]
+  const hasNonZeroBalance =
+    balances &&
+    (balances.items.length > 1 || BigInt(balances.items[0]?.balance || 0) > 0);
+  const hasOutgoingTransactions =
+    !!outgoingTransactions && outgoingTransactions.length > 0;
+  const completedItems = [hasNonZeroBalance, hasOutgoingTransactions];
 
-  const progress = calculateProgress(completedItems)
-  const stepsCompleted = completedItems.filter((item) => item).length
+  const progress = calculateProgress(completedItems);
+  const stepsCompleted = completedItems.filter((item) => item).length;
 
-  if (safe.deployed) return null
+  if (safe.deployed) return null;
 
-  const isActivating = undeployedSafe?.status.status !== 'AWAITING_EXECUTION'
+  const isActivating = undeployedSafe?.status.status !== 'AWAITING_EXECUTION';
 
   return (
     <WidgetContainer>
@@ -430,14 +465,25 @@ const FirstSteps = () => {
                 </linearGradient>
               </defs>
             </svg>
-            <CircularProgress variant="determinate" value={100} className={css.circleBg} size={60} thickness={5} />
+            <CircularProgress
+              variant="determinate"
+              value={100}
+              className={css.circleBg}
+              size={60}
+              thickness={5}
+            />
             <CircularProgress
               variant={isActivating ? 'indeterminate' : 'determinate'}
               value={progress === 0 ? 3 : progress} // Just to give an indication of the progress even at 0%
               className={css.circleProgress}
               size={60}
               thickness={5}
-              sx={{ 'svg circle': { stroke: 'url(#progress_gradient)', strokeLinecap: 'round' } }}
+              sx={{
+                'svg circle': {
+                  stroke: 'url(#progress_gradient)',
+                  strokeLinecap: 'round',
+                },
+              }}
             />
           </Grid>
           <Grid item>
@@ -449,12 +495,15 @@ const FirstSteps = () => {
                 mb: 1,
               }}
             >
-              {isActivating ? 'Account is being activated...' : 'Activate your Safe Account'}
+              {isActivating
+                ? 'Account is being activated...'
+                : 'Activate your Safe Account'}
             </Typography>
 
             {isActivating ? (
               <Typography variant="body2">
-                <strong>This may take a few minutes.</strong> Once activated, your account will be up and running.
+                <strong>This may take a few minutes.</strong> Once activated,
+                your account will be up and running.
               </Typography>
             ) : (
               <Typography variant="body2">
@@ -472,7 +521,10 @@ const FirstSteps = () => {
               <ActivationStatusWidget
                 explorerLink={
                   undeployedSafe?.status.txHash
-                    ? getExplorerLink(undeployedSafe.status.txHash, chain.blockExplorerUriTemplate).href
+                    ? getExplorerLink(
+                        undeployedSafe.status.txHash,
+                        chain.blockExplorerUriTemplate
+                      ).href
                     : undefined
                 }
               />
@@ -497,7 +549,7 @@ const FirstSteps = () => {
         </Grid>
       </WidgetBody>
     </WidgetContainer>
-  )
-}
+  );
+};
 
-export default FirstSteps
+export default FirstSteps;
